@@ -3,7 +3,13 @@
 
 *{
  color: #fff;
+
 }
+input, textarea {
+  color: gray;
+  background-color : #fff; 
+}
+
 body{
   background-color: #111;
 }
