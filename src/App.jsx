@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
-import NumberOfTask from './components/Header/NumberOfTask'
+import NumberOfTask from './components/others/NumberOfTask'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
       {/* <Login/>   */}
       {/* <EmployeeDashboard/> */}
 
-     <AdminDashboard/>
+      <AdminDashboard />
     </div>
   )
 }
