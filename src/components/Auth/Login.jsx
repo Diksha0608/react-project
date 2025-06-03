@@ -1,13 +1,15 @@
 import { useState } from "react"
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
+
+    console.log(handleLogin)
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log('email', email)
-        console.log('password', password)
+        handleLogin(email, password)
         setEmail("")
         setPassword("")
     }
@@ -44,7 +46,7 @@ const Login = () => {
                           border-none mt-7 font-semibold
                           bg-emerald-600 py-2 px-8  text-ll rounded-full
                           placeholder:text-white hover:bg-amber-700 w-full"
-                          
+
                     >Log in</button>
                 </form>
 
