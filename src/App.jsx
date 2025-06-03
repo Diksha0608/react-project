@@ -1,35 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import NumberOfTask from './components/others/NumberOfTask'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
 import { getLocalStorage, setLocalStorage } from './utils/localStorage'
+import AuthProvider, { AuthContext } from './context/AuthProvider'
 
 const App = () => {
 
-const [user,setUser] = useState(null)
+  const [user, setUser] = useState(null)
 
-const handleLogin = (email,password) =>{
- 
-  if(email == 'admin@me.com' && password == '123'){
-    console.log("This is admin")
-  }else if(email == 'user@me.com' && password == '123'){
-console.log("user")
+  const handleLogin = (email, password) => {
+
+    if (email == 'admin@me.com' && password == '123') {
+      setUser('admin')
+    } else if (email == 'user@me.com' && password == '123') {
+      setUser('employee')  
+    }
+    else {
+      alert("invalid Credentials")
+    }
   }
-  
-  else{
-    alert("invalid Credentials")
-  }
-}
-handleLogin('admin@me.com', 123)
+
+const data = useContext(AuthContext)
+console.log(data)
 
   return (
-    <div>
-      {!user ? <Login handleLogin={handleLogin} /> : ""} 
-      {/* <EmployeeDashboard/> */}
-
-      {/* <AdminDashboard /> */}
-    </div>
+    <>
+      {!user ? <Login handleLogin={handleLogin} /> : ""}
+      {user == 'admin' ? <AdminDashboard/> : <EmployeeDashboard/>}
+ 
+    </>
   )
 }
 
