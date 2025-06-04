@@ -1,35 +1,61 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
-import NumberOfTask from './components/others/NumberOfTask'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
-import { getLocalStorage, setLocalStorage } from './utils/localStorage'
-import AuthProvider, { AuthContext } from './context/AuthProvider'
+import { AuthContext } from './context/AuthProvider'
 
 const App = () => {
-
   const [user, setUser] = useState(null)
+  const [loggedInUserData, setLoggedInUserData] = useState(null)
+  const userData = useContext(AuthContext)
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser')
+    if (loggedInUser) {
+      const parsed = JSON.parse(loggedInUser)
+      setUser(parsed.role)
+      setLoggedInUserData(parsed.data)
+    }
+  }, [])
 
   const handleLogin = (email, password) => {
-
-    if (email == 'admin@me.com' && password == '123') {
-      setUser('admin')
-    } else if (email == 'user@me.com' && password == '123') {
-      setUser('employee')  
-    }
-    else {
-      alert("invalid Credentials")
+    if (userData?.admin) {
+      const admin = userData.admin.find((e)=> e.Email === email && e.Password === password)
+      if(admin){
+  setUser('admin')
+        setLoggedInUserData(admin)
+        localStorage.setItem(
+          'loggedInUser',
+          JSON.stringify({ role: 'employee', data: admin })
+        )
+      }
+    
+    } else if (userData?.employees) {
+      const employee = userData.employees.find(
+        (e) => e.Email === email && e.Password === password
+      )
+      if (employee) {
+        setUser('employee')
+        setLoggedInUserData(employee)
+        localStorage.setItem(
+          'loggedInUser',
+          JSON.stringify({ role: 'employee', data: employee })
+        )
+      } else {
+        alert('Invalid Credentials')
+      }
+    } else {
+      alert('User data not loaded yet')
     }
   }
 
-const data = useContext(AuthContext)
-console.log(data)
-
   return (
     <>
-      {!user ? <Login handleLogin={handleLogin} /> : ""}
-      {user == 'admin' ? <AdminDashboard/> : <EmployeeDashboard/>}
- 
+      {!user && <Login handleLogin={handleLogin} />}
+      {user === 'admin' && <AdminDashboard changeUser={setUser} />}
+      {user === 'employee' && (
+        <EmployeeDashboard changeUser={setUser} data={loggedInUserData} />
+      )}
     </>
   )
 }

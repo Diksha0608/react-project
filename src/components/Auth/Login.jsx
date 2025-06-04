@@ -2,16 +2,17 @@ import { useState } from "react"
 
 const Login = ({ handleLogin }) => {
 
-    console.log(handleLogin)
+    // console.log(handleLogin)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const submitHandler = (e) => {
         e.preventDefault()
-        handleLogin(email, password)
+        handleLogin(email,password)
         setEmail("")
         setPassword("")
+        console.error(e.error)
     }
 
     return (
@@ -24,7 +25,6 @@ const Login = ({ handleLogin }) => {
                         value={email}
                         onChange={(e) => {
                             setEmail(e.target.value)
-                            console.log('Chsanges')
                         }}
                         required
                         className="border-2 outline-none bg-transparent
