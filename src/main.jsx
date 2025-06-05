@@ -7,7 +7,7 @@ import AuthProvider from './context/AuthProvider';
 
 
 
-localStorage.clear()
+
 createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <AuthProvider>

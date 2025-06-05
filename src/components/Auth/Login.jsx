@@ -3,7 +3,7 @@ import { useState } from "react"
 const Login = ({ handleLogin }) => {
 
     // console.log(handleLogin)
-
+console.log("handleLogin in Login.jsx:", typeof handleLogin);
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -13,6 +13,7 @@ const Login = ({ handleLogin }) => {
         setEmail("")
         setPassword("")
         console.error(e.error)
+        
     }
 
     return (
