@@ -9,7 +9,6 @@ const App = () => {
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const userData = useContext(AuthContext);
 
-  // Load user from localStorage on first render
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
@@ -19,7 +18,7 @@ const App = () => {
         setLoggedInUserData(parsed.data);
       } catch (err) {
         console.error('Failed to parse user from localStorage:', err);
-        localStorage.removeItem('loggedInUser'); // Clean up bad data
+        localStorage.removeItem('loggedInUser'); 
       }
     }
   }, []);
