@@ -7,11 +7,11 @@ const AcceptTask = () => {
                 <h3 className='bg-red-600 px-3 py-1 text-sm rounded'>High</h3>
                 <h4 className='text-base'>25 may 2025</h4>
             </div>
-              <h2 className='mt-3 text-2xl font-semibold'>make a youtube vodeo</h2>
+              <h2 className='mt-3 text-2xl font-semibold'>make a youtube video</h2>
               <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error iste numquam enim pariatur molestiae praesentium amet.</p>
               <div className='flex justify-between mt-4'>
-                <button className='bg-green-500 py-1 px-2 text-sm'>Mark as Completed</button>
-                <button className='bg-red-500 py-1 px-2 text-sm'>Mark as Failed</button>
+                <button className='bg-green-500 py-1 px-2 text-sm rounded'>Mark as Completed</button>
+                <button className='bg-red-500 py-1 px-2 text-sm rounded'>Mark as Failed</button>
               </div>
         </div>
   )
