@@ -10,7 +10,7 @@ const CompleteTask = () => {
               <h2 className='mt-3 text-2xl font-semibold'>make a youtube video</h2>
               <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error iste numquam enim pariatur molestiae praesentium amet.</p>
         <div className='m-2'>
-            <button className='w-full bg-green-500 rounded'>Complete</button>
+            <button className='w-full bg-green-500 rounded'>Completed</button>
         </div>
         </div>
 
