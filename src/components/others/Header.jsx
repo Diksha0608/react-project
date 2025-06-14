@@ -5,6 +5,7 @@ const Header = ({ firstName, changeUser }) => {
 
   const logOutUser = () => {
     localStorage.setItem('loggedInUser', '');
+    window.location.reload()
     changeUser('');
   };
 

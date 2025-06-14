@@ -1,14 +1,14 @@
 import React from 'react'
 
-const AcceptTask = () => {
+const AcceptTask = ({data}) => {
   return (
     <div className=' flex-shrink-0 h-full w-[300px] p-5 bg-red-400 rounded-xl'>
             <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 px-3 py-1 text-sm rounded'>High</h3>
+                <h3 className='bg-red-600 px-3 py-1 text-sm rounded'>{data.category}</h3>
                 <h4 className='text-base'>25 may 2025</h4>
             </div>
-              <h2 className='mt-3 text-2xl font-semibold'>make a youtube video</h2>
-              <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error iste numquam enim pariatur molestiae praesentium amet.</p>
+              <h2 className='mt-3 text-2xl font-semibold'>{data.taskTitle}</h2>
+              <p className='text-sm mt-2'>{data.taskDescription}</p>
               <div className='flex justify-between mt-4'>
                 <button className='bg-green-500 py-1 px-2 text-sm rounded'>Mark as Completed</button>
                 <button className='bg-red-500 py-1 px-2 text-sm rounded'>Mark as Failed</button>
