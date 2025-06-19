@@ -8,7 +8,7 @@ const FailedTask = ({data}) => {
                 <h4 className='text-base'>{data.taskDate}</h4>
             </div>
               <h2 className='mt-3 text-2xl font-semibold'>{data.taskTitle}</h2>
-              <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error iste numquam enim pariatur molestiae praesentium amet.</p>
+              <p className='text-sm mt-2'>{data.taskDescription}</p>
         <div className='m-2'>
             <button className='w-full '>Failed</button>
         </div>
