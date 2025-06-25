@@ -13,7 +13,7 @@ const Header = (props) => {
       <h1 className='text-2xl font-medium'>
         Hello <br />
         <span className='text-3xl font-semibold'>
-         {firstName ? `${props.firstName} 👋` : 'User 👋'}
+         {props.firstName ? `${props.firstName} 👋` : 'User 👋'}
         </span>
       </h1>
       <button

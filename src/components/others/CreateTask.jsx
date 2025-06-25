@@ -7,16 +7,48 @@ const CreateTask = () => {
     const [assignTo, setAsignTo] = useState('')
     const [category, setCategory] = useState('')
 
-    const [task, setTask] = useState({})
+    const [newTask, setNewTask] = useState({})
 
-   const submitHandler = (e) => {
-    e.preventDefault()
+ const submitHandler = (e) => {
+    e.preventDefault();
 
-setTask({taskTitle,taskDate,taskDescription,category,active:false,newTask:true,failed:true,completed:false})
+    const task = {
+        taskTitle,
+        taskDate,
+        taskDescription,
+        category,
+        active: false,
+        newTask: true,
+        failed: false,
+        completed: false
+    };
 
-    
-console.log(task)
-   }
+    // Get employees data from localStorage
+    const employees = JSON.parse(localStorage.getItem('employees')) || [];
+
+    // Find the employee by first name and add the new task
+    const updatedEmployees = employees.map((employee) => {
+        if (employee.FirstName === assignTo) {
+            // Ensure employee has a tasks array
+            if (!Array.isArray(employee.tasks)) {
+                employee.tasks = [];
+            }
+            employee.tasks.push(task);
+        }
+        return employee;
+    });
+
+    // Save updated employee list back to localStorage
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+
+    // Reset form fields
+    setAsignTo('');
+    setCategory('');
+    setTaskDate('');
+    setTaskDescription('');
+    setTaskTitle('');
+};
+
 
   return (
       <div className='p-5 bg-[#1c1c1c] mt-7 rounded'>
