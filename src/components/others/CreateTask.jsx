@@ -12,10 +12,10 @@ const CreateTask = () => {
    const submitHandler = (e) => {
     e.preventDefault()
 
-setTask({taskTitle,taskDate,taskDescription,category,assignTo,active:false,newTask:true,failed:true,completed:false})
+setTask({taskTitle,taskDate,taskDescription,category,active:false,newTask:true,failed:true,completed:false})
 
     
-
+console.log(task)
    }
 
   return (

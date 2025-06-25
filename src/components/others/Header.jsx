@@ -1,12 +1,11 @@
 import React from 'react';
 
-const Header = ({ firstName, changeUser }) => {
-  console.log('Header Props:', { firstName });
+const Header = (props) => {
 
   const logOutUser = () => {
     localStorage.setItem('loggedInUser', '');
-    window.location.reload()
-    changeUser('');
+    // window.location.reload()
+    props.changeUser('');
   };
 
   return (
@@ -14,7 +13,7 @@ const Header = ({ firstName, changeUser }) => {
       <h1 className='text-2xl font-medium'>
         Hello <br />
         <span className='text-3xl font-semibold'>
-         {firstName ? `${firstName} 👋` : 'User 👋'}
+         {firstName ? `${props.firstName} 👋` : 'User 👋'}
         </span>
       </h1>
       <button
